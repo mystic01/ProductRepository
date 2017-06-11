@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductionBacklog", "ProductionBacklog\ProductionBacklog.csproj", "{2401723C-A21E-48E7-BFB7-9DADC7106A09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductionBacklogTests", "ProductionBacklogTests\ProductionBacklogTests.csproj", "{37A2D808-8CB0-4840-89F5-E889F162D1C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2401723C-A21E-48E7-BFB7-9DADC7106A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2401723C-A21E-48E7-BFB7-9DADC7106A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2401723C-A21E-48E7-BFB7-9DADC7106A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2401723C-A21E-48E7-BFB7-9DADC7106A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A2D808-8CB0-4840-89F5-E889F162D1C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A2D808-8CB0-4840-89F5-E889F162D1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A2D808-8CB0-4840-89F5-E889F162D1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A2D808-8CB0-4840-89F5-E889F162D1C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
