@@ -79,7 +79,6 @@ namespace ProductionBacklog.Tests
         {
             //Arrange
             var backlog = new ProductionBacklog(Generate11TestProductData());
-            IEnumerable<int> expected = new List<int> { 50, 66, 60 };
 
             //Act
             Action act = () => backlog.GetCollectionSummary(-1, "1AC575AE-A6B5-45CD-A7C1-96A554EEC274");
@@ -89,17 +88,16 @@ namespace ProductionBacklog.Tests
         }
 
         [TestMethod()]
-        public void GetCollectionTest_11組測資_0筆一組算Cost_預計會回傳0()
+        public void GetCollectionTest_11組測資_0筆一組算Cost_預計會發生ArgumentException()
         {
             //Arrange
             var backlog = new ProductionBacklog(Generate11TestProductData());
-            IEnumerable<int> expected = new List<int> { 0 };
 
             //Act
-            IEnumerable<int> actual = backlog.GetCollectionSummary(0, "Cost");
+            Action act = () => backlog.GetCollectionSummary(0, "Cost");
 
             //Assert
-            expected.ToExpectedObject().ShouldEqual(actual);
+            act.ShouldThrow<ArgumentException>();
         }
     }
 }

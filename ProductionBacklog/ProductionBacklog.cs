@@ -22,10 +22,8 @@ namespace ProductionBacklog
         {
             List<int> resultCollectionSummary = new List<int>();
 
-            if (collectionSize < 0)
+            if (collectionSize <= 0)
                 throw new ArgumentException("Collection size must larger than 0.");
-            else if (collectionSize == 0)
-                return new List<int> { 0 };
 
             int summary = 0;
             int sizeCount = 0;
