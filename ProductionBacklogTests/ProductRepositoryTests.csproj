@@ -65,13 +65,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ProductionBacklogTests.cs" />
+    <Compile Include="ProductRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProductionBacklog\ProductionBacklog.csproj">
+    <ProjectReference Include="..\ProductionBacklog\ProductRepository.csproj">
       <Project>{2401723C-A21E-48E7-BFB7-9DADC7106A09}</Project>
-      <Name>ProductionBacklog</Name>
+      <Name>ProductRepository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
