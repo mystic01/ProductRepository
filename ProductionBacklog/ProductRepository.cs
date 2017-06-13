@@ -11,7 +11,7 @@ namespace ProductRepository
         /// <param name="partSize">每組的數量</param>
         /// <param name="productProperty">指定的 Product 屬性</param>
         /// <returns></returns>
-        public static IEnumerable<int> GetPartSum(IEnumerable<Product> productList, int partSize, string productProperty)
+        public static IEnumerable<int> GetPartSum(IEnumerable<Product> products, int partSize, string productProperty)
         {
             List<int> resultPartSum = new List<int>();
 
@@ -21,9 +21,9 @@ namespace ProductRepository
             int sum = 0;
             int sizeCount = 0;
 
-            foreach (var prod in productList)
+            foreach (var product in products)
             {
-                int? num = (int?) prod.GetType().GetProperty(productProperty).GetValue(prod, null);
+                int? num = (int?) product.GetType().GetProperty(productProperty).GetValue(product, null);
 
                 if (num == null)
                     throw new ArgumentException("No this product property in Product : " + productProperty);
