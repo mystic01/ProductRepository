@@ -36,11 +36,11 @@ namespace ProductRepository.Tests
         public void GetPartSum_11組測資_Cost為1至11_3筆一組算Cost應回傳6_15_24_21()
         {
             //Arrange
-            var repository = new ProductRepository(Generate11TestProductData());
+            var repository = Generate11TestProductData();
             IEnumerable<int> expected = new List<int> { 6, 15, 24, 21 };
 
             //Act
-            IEnumerable<int> actual = repository.GetPartSum(3, "Cost");
+            IEnumerable<int> actual = ProductRepository.GetPartSum(repository, 3, "Cost");
 
             //Assert
             expected.ToExpectedObject().ShouldEqual(actual);
@@ -50,11 +50,11 @@ namespace ProductRepository.Tests
         public void GetPartSum_11組測資_Revenue為11至21_4筆一組算Revenue應回傳50_66_60()
         {
             //Arrange
-            var repository = new ProductRepository(Generate11TestProductData());
+            var repository = Generate11TestProductData();
             IEnumerable<int> expected = new List<int> { 50, 66, 60 };
 
             //Act
-            IEnumerable<int> actual = repository.GetPartSum(4, "Revenue");
+            IEnumerable<int> actual = ProductRepository.GetPartSum(repository, 4, "Revenue");
 
             //Assert
             expected.ToExpectedObject().ShouldEqual(actual);
@@ -64,11 +64,11 @@ namespace ProductRepository.Tests
         public void GetPartSum_11組測資_負1筆一組算Cost_預計會發生ArgumentException()
         {
             //Arrange
-            var repository = new ProductRepository(Generate11TestProductData());
+            var repository = Generate11TestProductData();
             IEnumerable<int> expected = new List<int> { 50, 66, 60 };
 
             //Act
-            Action act = () => repository.GetPartSum(-1, "Cost");
+            Action act = () => ProductRepository.GetPartSum(repository, - 1, "Cost");
 
             //Assert
             act.ShouldThrow<ArgumentException>();
@@ -78,10 +78,10 @@ namespace ProductRepository.Tests
         public void GetPartSum_11組測資_3筆一組算不存在欄位_預計會發生ArgumentException()
         {
             //Arrange
-            var repository = new ProductRepository(Generate11TestProductData());
+            var repository = Generate11TestProductData();
 
             //Act
-            Action act = () => repository.GetPartSum(-1, "1AC575AE-A6B5-45CD-A7C1-96A554EEC274");
+            Action act = () => ProductRepository.GetPartSum(repository, - 1, "1AC575AE-A6B5-45CD-A7C1-96A554EEC274");
 
             //Assert
             act.ShouldThrow<ArgumentException>();
@@ -91,10 +91,10 @@ namespace ProductRepository.Tests
         public void GetPartSum_11組測資_0筆一組算Cost_預計會發生ArgumentException()
         {
             //Arrange
-            var repository = new ProductRepository(Generate11TestProductData());
+            var repository = Generate11TestProductData();
 
             //Act
-            Action act = () => repository.GetPartSum(0, "Cost");
+            Action act = () => ProductRepository.GetPartSum(repository, 0, "Cost");
 
             //Assert
             act.ShouldThrow<ArgumentException>();
