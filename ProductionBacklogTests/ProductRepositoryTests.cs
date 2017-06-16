@@ -40,7 +40,7 @@ namespace ProductRepository.Tests
             IEnumerable<int> expected = new List<int> { 6, 15, 24, 21 };
 
             //Act
-            IEnumerable<int> actual = ProductRepository.GetPartSum(repository, 3, "Cost");
+            IEnumerable<int> actual = ProductRepository.GetPartSum(repository, 3, (x => x.Cost)).ToList();
 
             //Assert
             expected.ToExpectedObject().ShouldEqual(actual);
@@ -54,7 +54,7 @@ namespace ProductRepository.Tests
             IEnumerable<int> expected = new List<int> { 50, 66, 60 };
 
             //Act
-            IEnumerable<int> actual = ProductRepository.GetPartSum(repository, 4, "Revenue");
+            IEnumerable<int> actual = ProductRepository.GetPartSum(repository, 4, (x => x.Revenue)).ToList();
 
             //Assert
             expected.ToExpectedObject().ShouldEqual(actual);
@@ -68,12 +68,13 @@ namespace ProductRepository.Tests
             IEnumerable<int> expected = new List<int> { 50, 66, 60 };
 
             //Act
-            Action act = () => ProductRepository.GetPartSum(repository, - 1, "Cost");
+            Action act = () => ProductRepository.GetPartSum(repository, - 1, (x => x.Cost)).ToList();
 
             //Assert
             act.ShouldThrow<ArgumentException>();
         }
 
+        /*
         [TestMethod()]
         public void GetPartSum_11組測資_3筆一組算不存在欄位_預計會發生ArgumentException()
         {
@@ -81,11 +82,12 @@ namespace ProductRepository.Tests
             var repository = Generate11TestProductData();
 
             //Act
-            Action act = () => ProductRepository.GetPartSum(repository, - 1, "1AC575AE-A6B5-45CD-A7C1-96A554EEC274");
+            Action act = () => ProductRepository.GetPartSum(repository, - 1, (x => x.A1C575AEA6B545CDA7C196A554EEC274));
 
             //Assert
             act.ShouldThrow<ArgumentException>();
         }
+        */
 
         [TestMethod()]
         public void GetPartSum_11組測資_0筆一組算Cost_預計會發生ArgumentException()
@@ -94,7 +96,7 @@ namespace ProductRepository.Tests
             var repository = Generate11TestProductData();
 
             //Act
-            Action act = () => ProductRepository.GetPartSum(repository, 0, "Cost");
+            Action act = () => ProductRepository.GetPartSum(repository, 0, (x => x.Cost)).ToList();
 
             //Assert
             act.ShouldThrow<ArgumentException>();

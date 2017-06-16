@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProductRepository
 {
@@ -11,38 +12,18 @@ namespace ProductRepository
         /// <param name="partSize">每組的數量</param>
         /// <param name="productProperty">指定的 Product 屬性</param>
         /// <returns></returns>
-        public static IEnumerable<int> GetPartSum(IEnumerable<Product> products, int partSize, string productProperty)
+        public static IEnumerable<int> GetPartSum(IEnumerable<Product> products, int partSize, Func<Product, int> selector)
         {
-            List<int> resultPartSum = new List<int>();
-
             if (partSize <= 0)
                 throw new ArgumentException("part size must larger than 0.");
 
-            int sum = 0;
-            int sizeCount = 0;
-
-            foreach (var product in products)
+            var productsList = products.ToList();
+            int index = 0;
+            while (index < productsList.Count)
             {
-                int? num = (int?) product.GetType().GetProperty(productProperty).GetValue(product, null);
-
-                if (num == null)
-                    throw new ArgumentException("No this product property in Product : " + productProperty);
-                else
-                    sum += num.GetValueOrDefault();
-
-                sizeCount++;
-                if (sizeCount >= partSize)
-                {
-                    resultPartSum.Add(sum);
-                    sum = 0;
-                    sizeCount = 0;
-                }
+                yield return productsList.Skip(index).Take(partSize).Sum(selector);
+                index += partSize;
             }
-
-            if (sizeCount > 0)
-                resultPartSum.Add(sum);
-
-            return resultPartSum;
         }
     }
 }
