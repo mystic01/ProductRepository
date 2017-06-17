@@ -1,6 +1,6 @@
-/ProductionBacklog/bin
-/ProductionBacklog/obj
+/ProductRepository/bin
+/ProductRepository/obj
 /TestResults
 /.vs
-/ProductionBacklogTests/obj
-/ProductionBacklogTests/bin
+/ProductRepositoryTests/obj
+/ProductRepositoryTests/bin
